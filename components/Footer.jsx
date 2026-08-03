@@ -1,0 +1,91 @@
+import Link from "next/link";
+import Logo from "./Logo";
+import FooterNewsletter from "./FooterNewsletter";
+import {
+  IconPhone, IconMail, IconPin, IconClock,
+  IconFacebook, IconInstagram, IconYoutube, IconWhatsapp,
+} from "./Icons";
+
+export default function Footer() {
+  return (
+    <footer className="footer">
+      {/* newsletter band */}
+      <div className="footer-top">
+        <div className="footer-news">
+          <div className="footer-news-copy">
+            <h3>Stay <span className="accent">Cool</span> with Sitara</h3>
+            <p>New models, seasonal offers and cooling tips — straight to your inbox.</p>
+          </div>
+          <FooterNewsletter />
+        </div>
+      </div>
+
+      <div className="footer-inner">
+        <div className="footer-grid">
+          <div>
+            <div className="footer-logo-chip">
+              <Logo variant="footer" />
+            </div>
+            <p style={{ maxWidth: 320 }}>
+              Delivering comfort, style and reliability to homes across the
+              country. Premium ceiling, designer, pedestal and rechargeable
+              fans — Sitara comfort for every home.
+            </p>
+            <div className="social-row" style={{ marginTop: 20 }}>
+              <a className="social-chip fb" href="#" aria-label="Facebook"><IconFacebook /></a>
+              <a className="social-chip ig" href="#" aria-label="Instagram"><IconInstagram /></a>
+              <a className="social-chip yt" href="#" aria-label="YouTube"><IconYoutube /></a>
+              <a className="social-chip wa" href="#" aria-label="WhatsApp"><IconWhatsapp /></a>
+            </div>
+          </div>
+
+          <div>
+            <h4>Quick Links</h4>
+            <Link href="/">Home</Link>
+            <Link href="/products">Products</Link>
+            <Link href="/#about">About Us</Link>
+            <Link href="/#why">Why Sitara</Link>
+            <Link href="/#gallery">Gallery</Link>
+            <Link href="/contact">Contact Us</Link>
+          </div>
+
+          <div>
+            <h4>Our Products</h4>
+            <Link href="/products">Designer Fans</Link>
+            <Link href="/products">Ceiling Fans</Link>
+            <Link href="/products">Pedestal Fans</Link>
+            <Link href="/products">Rechargeable</Link>
+            <Link href="/products">All Models</Link>
+          </div>
+
+          <div>
+            <h4>Contact Us</h4>
+            <div className="foot-contact">
+              <a href="tel:+923001234567">
+                <span className="foot-ic"><IconPhone /></span> +92 300 1234567
+              </a>
+              <a href="mailto:info@sitarafans.com">
+                <span className="foot-ic"><IconMail /></span> info@sitarafans.com
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=Gujranwala%2C+Pakistan" target="_blank" rel="noreferrer">
+                <span className="foot-ic"><IconPin /></span> Gujranwala, Pakistan
+              </a>
+              <span className="foot-hours">
+                <span className="foot-ic"><IconClock /></span> Mon–Sat · 9am – 8pm
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <span>© {new Date().getFullYear()} Sitara Fans. All Rights Reserved.</span>
+        <span className="foot-made">Proudly manufactured in Pakistan 🇵🇰</span>
+        <span className="foot-policy">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </span>
+      </div>
+    </footer>
+  );
+}
