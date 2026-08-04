@@ -3,7 +3,7 @@
 import { IconWhatsapp } from "./Icons";
 
 // Sitara Fans WhatsApp number (same as the contact page)
-const PHONE = "923001234567";
+const PHONE = "923001116492";
 const TEXT = encodeURIComponent(
   "Assalam o Alaikum! I'm interested in Sitara Fans. Could you help me?"
 );

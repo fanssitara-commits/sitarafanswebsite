@@ -9,9 +9,9 @@ export const metadata = {
 };
 
 const channels = [
-  { icon: <IconPhone size={22} />, title: "Call Us", text: "+92 300 1234567", note: "Mon–Sat, 9am–8pm" },
-  { icon: <IconWhatsapp size={22} />, title: "WhatsApp", text: "+92 300 1234567", note: "Quick replies during working hours" },
-  { icon: <IconMail size={22} />, title: "Email", text: "info@sitarafans.com", note: "We reply within 24 hours" },
+  { icon: <IconPhone size={22} />, title: "Call Us", text: "+92 300 1116492", note: "Mon–Sat, 9am–8pm" },
+  { icon: <IconWhatsapp size={22} />, title: "WhatsApp", text: "+92 300 1116492", note: "Quick replies during working hours" },
+  { icon: <IconMail size={22} />, title: "Email", text: "fanssitara@gmail.com", note: "We reply within 24 hours" },
   { icon: <IconClock size={22} />, title: "Service Hours", text: "Mon–Sat, 9am–8pm", note: "Closed on public holidays" },
 ];
 

@@ -29,7 +29,7 @@ export default function ExportPage() {
             distributors and retailers across the globe — factory-direct
             pricing, certified quality and dependable shipping.
           </p>
-          <Link href="/contact" className="btn btn-primary">
+          <Link href="/export-inquiry#inquiry-form" className="btn btn-primary">
             Request an Export Quote <IconArrowRight />
           </Link>
         </div>
@@ -75,7 +75,7 @@ export default function ExportPage() {
             ))}
           </div>
           <div className="center" style={{ marginTop: 36 }}>
-            <Link href="/contact" className="btn btn-blue">
+            <Link href="/export-inquiry#inquiry-form" className="btn btn-blue">
               Become a Distributor <IconArrowRight />
             </Link>
           </div>

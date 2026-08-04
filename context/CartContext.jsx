@@ -45,12 +45,9 @@ export function CartProvider({ children }) {
     }
   }, []);
 
-  useEffect(() => {
-    // orders are admin-only — don't waste a request (401) on public pages
-    if (typeof window !== "undefined" && window.location.pathname.startsWith("/admin")) {
-      refreshOrders();
-    }
-  }, [refreshOrders]);
+  // NOTE: orders are admin-only. We do NOT auto-fetch here — the admin layout
+  // calls refreshOrders() once the session is authenticated, so public pages
+  // and the admin login screen never hit /api/orders (no 401 noise).
 
   const showToast = useCallback((msg) => {
     setToast(msg);
@@ -88,7 +85,7 @@ export function CartProvider({ children }) {
         ];
       });
       const label = [color, variant].filter(Boolean).join(" · ");
-      showToast(`${product.name}${label ? ` (${label})` : ""} added to cart 🛒`);
+      showToast(`${product.name}${label ? ` (${label})` : ""} added to cart`);
     },
     [showToast]
   );

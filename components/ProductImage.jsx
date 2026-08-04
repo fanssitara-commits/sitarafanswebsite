@@ -22,6 +22,7 @@ export default function ProductImage({ product, spin = false }) {
       alt={product.name}
       onError={() => setFailed(true)}
       loading="lazy"
+      decoding="async"
     />
   );
 }

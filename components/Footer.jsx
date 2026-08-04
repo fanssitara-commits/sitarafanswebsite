@@ -61,11 +61,11 @@ export default function Footer() {
           <div>
             <h4>Contact Us</h4>
             <div className="foot-contact">
-              <a href="tel:+923001234567">
-                <span className="foot-ic"><IconPhone /></span> +92 300 1234567
+              <a href="tel:+923001116492">
+                <span className="foot-ic"><IconPhone /></span> +92 300 1116492
               </a>
-              <a href="mailto:info@sitarafans.com">
-                <span className="foot-ic"><IconMail /></span> info@sitarafans.com
+              <a href="mailto:fanssitara@gmail.com">
+                <span className="foot-ic"><IconMail /></span> fanssitara@gmail.com
               </a>
               <a href="https://www.google.com/maps/search/?api=1&query=Gujranwala%2C+Pakistan" target="_blank" rel="noreferrer">
                 <span className="foot-ic"><IconPin /></span> Gujranwala, Pakistan

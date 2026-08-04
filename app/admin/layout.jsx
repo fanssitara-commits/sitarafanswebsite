@@ -10,11 +10,12 @@ import AdminSidebar from "@/components/admin/AdminSidebar";
 export default function AdminLayout({ children }) {
   const { orders, refreshOrders } = useCart();
   const { allProducts } = useInventory();
-  const { items: messages } = useLocalList("sitara_messages");
-  const { items: complaints } = useLocalList("sitara_complaints");
-  const { items: inquiries } = useLocalList("sitara_export-inquiries");
   const [authed, setAuthed] = useState(false);
   const [checked, setChecked] = useState(false);
+  // only fetch admin-only data once logged in (avoids 401s on the login screen)
+  const { items: messages } = useLocalList("sitara_messages", { enabled: authed });
+  const { items: complaints } = useLocalList("sitara_complaints", { enabled: authed });
+  const { items: inquiries } = useLocalList("sitara_export-inquiries", { enabled: authed });
 
   // ask the server whether this session is authenticated (httpOnly cookie)
   useEffect(() => {

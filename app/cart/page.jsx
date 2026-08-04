@@ -4,7 +4,7 @@ import Link from "next/link";
 import ProductImage from "@/components/ProductImage";
 import { useCart } from "@/context/CartContext";
 import { formatPKR } from "@/data/products";
-import { IconTrash } from "@/components/Icons";
+import { IconTrash, IconCart, IconTruck, IconArrowRight } from "@/components/Icons";
 
 export default function CartPage() {
   const { cart, ready, updateQty, removeFromCart, subtotal } = useCart();
@@ -21,7 +21,7 @@ export default function CartPage() {
 
       {cart.length === 0 ? (
         <div className="glass empty-state">
-          <div className="emoji">🛒</div>
+          <div className="empty-icon"><IconCart size={38} /></div>
           <h3>Your cart is empty</h3>
           <p>Looks like you haven&apos;t added any fans yet.</p>
           <Link href="/products" className="btn btn-primary mt-40">
@@ -101,8 +101,8 @@ export default function CartPage() {
                 <span>{shipping === 0 ? "FREE" : formatPKR(shipping)}</span>
               </div>
               {shipping === 0 && subtotal > 0 && (
-                <p style={{ fontSize: "0.8rem", margin: "4px 0 0", color: "var(--blue-2)" }}>
-                  🎉 You unlocked free shipping!
+                <p style={{ fontSize: "0.8rem", margin: "4px 0 0", color: "var(--blue-2)", display: "inline-flex", alignItems: "center", gap: 6 }}>
+                  <IconTruck size={15} /> You unlocked free shipping!
                 </p>
               )}
               <div className="summary-total">
@@ -114,7 +114,7 @@ export default function CartPage() {
                 className="btn btn-primary"
                 style={{ width: "100%", justifyContent: "center", marginTop: 20 }}
               >
-                Proceed to Checkout →
+                Proceed to Checkout <IconArrowRight size={16} />
               </Link>
               <Link
                 href="/products"

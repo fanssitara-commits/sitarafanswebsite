@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Logo from "@/components/Logo";
 import {
-  IconLock, IconArrowRight, IconShield, IconPackage, IconUsers, IconCheck,
+  IconLock, IconArrowRight, IconArrowLeft, IconShield, IconPackage, IconUsers, IconCheck,
 } from "@/components/Icons";
 
 const perks = [
@@ -145,7 +145,7 @@ export default function AdminLogin({ onAuthenticate }) {
           </div>
 
           <Link href="/" className="auth-back">
-            ← Back to website
+            <IconArrowLeft size={15} /> Back to website
           </Link>
         </form>
       </motion.main>

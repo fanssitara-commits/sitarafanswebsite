@@ -10,6 +10,7 @@ import { IconCart, IconArrowRight, IconMenu, IconClose, IconChevron } from "./Ic
 const nav = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products" },
+  { label: "AI Assistant", href: "/assistant" },
   {
     label: "Export",
     children: [

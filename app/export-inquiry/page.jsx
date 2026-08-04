@@ -139,7 +139,7 @@ export default function ExportInquiryPage() {
       </section>
 
       {/* form + sidebar */}
-      <section className="section soft">
+      <section id="inquiry-form" className="section soft" style={{ scrollMarginTop: 90 }}>
         <div className="container">
           {done ? (
             <div className="glass center" style={{ padding: "56px 30px", maxWidth: 640, margin: "0 auto", borderRadius: 18 }}>
@@ -241,8 +241,8 @@ export default function ExportInquiryPage() {
                     </div>
                   ))}
                   <div className="flex gap-12 wrap" style={{ marginTop: 10 }}>
-                    <a className="btn btn-sm" href="mailto:info@sitarafans.com"><IconMail size={15} /> Email</a>
-                    <a className="btn btn-sm" href="https://wa.me/923001234567" target="_blank" rel="noreferrer"><IconWhatsapp size={15} /> WhatsApp</a>
+                    <a className="btn btn-sm" href="mailto:fanssitara@gmail.com"><IconMail size={15} /> Email</a>
+                    <a className="btn btn-sm" href="https://wa.me/923001116492" target="_blank" rel="noreferrer"><IconWhatsapp size={15} /> WhatsApp</a>
                   </div>
                 </div>
 

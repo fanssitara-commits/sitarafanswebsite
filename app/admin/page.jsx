@@ -13,6 +13,7 @@ import { formatPKR } from "@/data/products";
 import {
   IconPackage, IconUsers, IconStar, IconShield, IconArrowRight,
   IconChat, IconSupport, IconArrowRight as IconGo,
+  IconAlert,
 } from "@/components/Icons";
 
 /* Validated categorical palette (colorblind-safe) */
@@ -60,7 +61,7 @@ const Empty = ({ text }) => (
 
 export default function AdminDashboard() {
   const { orders, ready } = useCart();
-  const { inventory, allProducts } = useInventory();
+  const { allProducts } = useInventory();
   const { items: messages } = useLocalList("sitara_messages");
   const { items: complaints } = useLocalList("sitara_complaints");
 
@@ -99,10 +100,6 @@ export default function AdminDashboard() {
   const hasAnyData = orders.length || messages.length || complaints.length;
   const today = new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
-  const loadDemo = async () => {
-    await fetch("/api/seed", { method: "POST" });
-    window.location.reload();
-  };
   const clearData = async () => {
     if (window.confirm("Remove all demo orders, messages and complaints?")) {
       await fetch("/api/seed", { method: "DELETE" });
@@ -119,7 +116,7 @@ export default function AdminDashboard() {
 
   const quick = [
     { href: "/admin/orders", icon: <IconPackage size={20} />, label: "Orders", sub: `${orders.length} total`, tone: "blue" },
-    { href: "/admin/inventory", icon: <IconShield size={20} />, label: "Inventory", sub: `${inventory.length} added · ${allProducts.length} live`, tone: "teal" },
+    { href: "/admin/inventory", icon: <IconShield size={20} />, label: "Inventory", sub: `${allProducts.length} added · ${allProducts.length} live`, tone: "teal" },
     { href: "/admin/messages", icon: <IconChat size={20} />, label: "Messages", sub: unreadMsgs ? `${unreadMsgs} unread` : `${messages.length} total`, tone: "amber", badge: unreadMsgs },
     { href: "/admin/complaints", icon: <IconSupport size={20} />, label: "Complaints", sub: newComplaints ? `${newComplaints} new` : `${complaints.length} total`, tone: "red", badge: newComplaints },
   ];
@@ -136,9 +133,7 @@ export default function AdminDashboard() {
           <span className="date-chip">{today}</span>
           {hasAnyData ? (
             <button className="btn btn-sm" onClick={clearData}>Clear data</button>
-          ) : (
-            <button className="btn btn-blue btn-sm" onClick={loadDemo}>✨ Load sample data</button>
-          )}
+          ) : null}
           <Link href="/admin/inventory" className="btn btn-primary btn-sm">
             Manage Inventory <IconArrowRight />
           </Link>
@@ -299,7 +294,7 @@ export default function AdminDashboard() {
       {lowStock.length > 0 && (
         <section className="admin-card lowstock">
           <div className="recent-head">
-            <h3>⚠️ Low Stock Alert</h3>
+            <h3 style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><IconAlert size={18} style={{ color: "#f59e0b" }} /> Low Stock Alert</h3>
             <Link href="/admin/inventory" className="recent-link">Manage <IconGo size={14} /></Link>
           </div>
           <div className="lowstock-row">

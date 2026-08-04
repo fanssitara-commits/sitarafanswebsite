@@ -10,9 +10,9 @@ const ADDRESS = "Industrial Area, Gujranwala, Punjab, Pakistan";
 const MAPS = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(ADDRESS);
 
 const channels = [
-  { icon: <IconPhone size={20} />, title: "Call Us", lines: ["+92 300 1234567"], note: "Mon–Sat, 9am–8pm", href: "tel:+923001234567", cta: "Call now" },
-  { icon: <IconWhatsapp size={20} />, title: "WhatsApp", lines: ["+92 300 1234567"], note: "Fast replies in working hours", href: "https://wa.me/923001234567", cta: "Chat on WhatsApp", tone: "red" },
-  { icon: <IconMail size={20} />, title: "Email Us", lines: ["info@sitarafans.com"], note: "We reply within 24 hours", href: "mailto:info@sitarafans.com", cta: "Send an email" },
+  { icon: <IconPhone size={20} />, title: "Call Us", lines: ["+92 300 1116492"], note: "Mon–Sat, 9am–8pm", href: "tel:+923001116492", cta: "Call now" },
+  { icon: <IconWhatsapp size={20} />, title: "WhatsApp", lines: ["+92 300 1116492"], note: "Fast replies in working hours", href: "https://wa.me/923001116492", cta: "Chat on WhatsApp", tone: "red" },
+  { icon: <IconMail size={20} />, title: "Email Us", lines: ["fanssitara@gmail.com"], note: "We reply within 24 hours", href: "mailto:fanssitara@gmail.com", cta: "Send an email" },
   { icon: <IconPin size={20} />, title: "Visit Us", lines: [ADDRESS], note: "Factory & head office", href: MAPS, cta: "Get directions", tone: "red" },
 ];
 
@@ -34,7 +34,7 @@ export default function ContactPage() {
       if (!res.ok) throw new Error("failed");
       window.dispatchEvent(new Event("sitara:data"));
       setSent(true);
-      showToast("Message sent! We'll reply soon 💬");
+      showToast("Message sent! We'll reply soon.");
       setForm({ name: "", phone: "", email: "", subject: "", message: "" });
       setTimeout(() => setSent(false), 4000);
     } catch {

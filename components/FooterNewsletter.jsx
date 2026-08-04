@@ -26,7 +26,7 @@ export default function FooterNewsletter() {
       <input
         type="email"
         required
-        placeholder={done ? "You're subscribed 🎉" : "Enter your email"}
+        placeholder={done ? "You're subscribed!" : "Enter your email"}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         aria-label="Email address"

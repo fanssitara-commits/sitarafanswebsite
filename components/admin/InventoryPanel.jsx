@@ -9,7 +9,7 @@ import {
 } from "@/components/Icons";
 
 export default function InventoryPanel() {
-  const { inventory, allProducts, deleteProduct } = useInventory();
+  const { allProducts, deleteProduct } = useInventory();
   const lowStock = allProducts.filter((p) => typeof p.stock === "number" && p.stock > 0 && p.stock <= 5).length;
   const outStock = allProducts.filter((p) => p.stock === 0).length;
 
@@ -20,7 +20,7 @@ export default function InventoryPanel() {
         <div className="stat-card blue"><span className="stat-ic"><IconPackage size={19} /></span>
           <div><div className="stat-val">{allProducts.length}</div><div className="stat-lbl">Live Fans</div></div></div>
         <div className="stat-card teal"><span className="stat-ic"><IconStar size={17} /></span>
-          <div><div className="stat-val">{inventory.length}</div><div className="stat-lbl">Added by You</div></div></div>
+          <div><div className="stat-val">{allProducts.length}</div><div className="stat-lbl">Added by You</div></div></div>
         <div className="stat-card amber"><span className="stat-ic"><IconBolt size={18} /></span>
           <div><div className="stat-val">{lowStock}</div><div className="stat-lbl">Low Stock</div></div></div>
         <div className="stat-card red"><span className="stat-ic"><IconShield size={18} /></span>
@@ -31,9 +31,8 @@ export default function InventoryPanel() {
       <div className="inv-head">
         <p style={{ margin: 0, fontSize: "0.88rem" }}>
           <strong style={{ color: "var(--ink)" }}>{allProducts.length}</strong> fan
-          {allProducts.length === 1 ? "" : "s"} in your catalogue
-          {inventory.length > 0 ? ` — ${inventory.length} added by you` : ""}. Any fan
-          below can be edited or removed.
+          {allProducts.length === 1 ? "" : "s"} in your catalogue — all added by you.
+          Any fan below can be edited or removed.
         </p>
         <Link href="/admin/inventory/new" className="btn btn-primary">
           + Add New Fan
@@ -68,7 +67,7 @@ export default function InventoryPanel() {
                   {p.oldPrice ? <s>{formatPKR(p.oldPrice)}</s> : null}
                 </div>
                 <div className="inv-tags">
-                  <span>{p.custom ? "Added by you" : "Catalogue"}</span>
+                  <span>Added by you</span>
                   {p.warranty && <span>{p.warranty} warranty</span>}
                   {p.stock != null && <span>{p.stock} in stock</span>}
                   {Array.isArray(p.variants) && p.variants.length > 0 && (

@@ -13,7 +13,7 @@ const slides = slideNums.map((n) => ({
   alt: "Sitara Fans — Sitara comfort for every home",
 }));
 
-const DURATION = 2000; // ms each slide is shown
+const DURATION = 5500; // ms each slide is shown
 
 // directional slide (modern carousel wipe) + soft fade
 const variants = {

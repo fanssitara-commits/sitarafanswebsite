@@ -148,7 +148,7 @@ function InventoryForm() {
     const res = editingId ? await updateProduct(editingId, form) : await addProduct(form);
     setSaving(false);
     if (res && res.ok === false) { setErr(res.error); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
-    showToast(editingId ? "Fan updated successfully ✅" : `“${form.name}” added ✅`);
+    showToast(editingId ? "Fan updated successfully" : `“${form.name}” added`);
     router.push("/admin/inventory");
   };
 

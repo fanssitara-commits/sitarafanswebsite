@@ -13,7 +13,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
  * `key` is a legacy localStorage key like "sitara_messages"; we map it to the
  * API resource by stripping the "sitara_" prefix.
  */
-export default function useLocalList(key) {
+export default function useLocalList(key, { enabled = true } = {}) {
   const resource = key.replace(/^sitara_/, "");
   const [items, setItems] = useState([]);
   const [ready, setReady] = useState(false);
@@ -38,6 +38,12 @@ export default function useLocalList(key) {
   }, [read]);
 
   useEffect(() => {
+    // don't hit admin-only endpoints until enabled (e.g. after admin login)
+    if (!enabled) {
+      setItems([]);
+      setReady(false);
+      return;
+    }
     refresh();
     const sync = () => refresh();
     window.addEventListener("focus", sync);
@@ -46,7 +52,7 @@ export default function useLocalList(key) {
       window.removeEventListener("focus", sync);
       window.removeEventListener("sitara:data", sync);
     };
-  }, [refresh]);
+  }, [refresh, enabled]);
 
   const save = useCallback(
     async (next) => {

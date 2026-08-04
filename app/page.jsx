@@ -10,8 +10,9 @@ import {
   IconShield, IconGear, IconLeaf, IconUsers, IconArrowRight, IconStar,
 } from "@/components/Icons";
 
-// render per request so admin edits (price, image, name) show up live
-export const dynamic = "force-dynamic";
+// Cache the rendered landing page and refresh it periodically (ISR) instead of
+// hitting the DB + re-rendering on every visit. Admin edits appear within ~2 min.
+export const revalidate = 120;
 
 // ids each section prefers to show — a DIFFERENT mix of designs per section
 const FEATURED_IDS = ["sitara-royal-gold", "sitara-prime-black", "sitara-classic-ivory", "sitara-snow-white"];
@@ -312,7 +313,7 @@ export default async function HomePage() {
                 <div className="cta-fans">
                   {ctaFans.map((f) => (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img key={f.src} src={f.src} alt={f.alt} />
+                    <img key={f.src} src={f.src} alt={f.alt} loading="lazy" decoding="async" />
                   ))}
                 </div>
               </div>

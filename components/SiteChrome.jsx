@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
+import AiAssistantButton from "./AiAssistantButton";
 
 /** The admin area has its own shell, so the public navbar/footer are hidden there. */
 export default function SiteChrome({ children }) {
@@ -15,6 +16,7 @@ export default function SiteChrome({ children }) {
       <Navbar />
       <main>{children}</main>
       <Footer />
+      <AiAssistantButton />
       <WhatsAppButton />
     </>
   );

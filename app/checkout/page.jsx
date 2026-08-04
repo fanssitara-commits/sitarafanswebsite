@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { formatPKR } from "@/data/products";
+import { IconCheck, IconCart, IconLock } from "@/components/Icons";
 
 const empty = {
   name: "",
@@ -58,7 +59,7 @@ export default function CheckoutPage() {
     return (
       <div className="container" style={{ paddingBottom: 40 }}>
         <div className="glass-strong center" style={{ padding: "60px 30px", marginTop: 40 }}>
-          <div style={{ fontSize: "3.5rem" }}>✅</div>
+          <div className="success-check"><IconCheck size={40} /></div>
           <h1 className="section-title">Order Placed!</h1>
           <p className="section-sub" style={{ margin: "6px auto 18px" }}>
             Thank you, {placed.customer.name}! Your order{" "}
@@ -105,7 +106,7 @@ export default function CheckoutPage() {
     return (
       <div className="container">
         <div className="glass empty-state" style={{ marginTop: 40 }}>
-          <div className="emoji">🛒</div>
+          <div className="empty-icon"><IconCart size={38} /></div>
           <h3>Your cart is empty</h3>
           <p>Add some fans before checking out.</p>
           <Link href="/products" className="btn btn-primary mt-40">
@@ -204,7 +205,7 @@ export default function CheckoutPage() {
             )}
             <button type="submit" className="btn btn-primary" disabled={submitting}
               style={{ width: "100%", justifyContent: "center", marginTop: 18 }}>
-              {submitting ? "Placing…" : "✅ Place Order"}
+              {submitting ? "Placing…" : <><IconLock size={16} /> Place Order</>}
             </button>
             <Link href="/cart" className="btn btn-ghost" style={{ width: "100%", justifyContent: "center", marginTop: 10 }}>
               Back to Cart

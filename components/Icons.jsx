@@ -32,6 +32,12 @@ import {
   ChevronRight,
   Clock,
   Headphones,
+  Mic,
+  Square,
+  Volume2,
+  AlertTriangle,
+  Sparkles,
+  PartyPopper,
 } from "lucide-react";
 
 const make =
@@ -65,6 +71,13 @@ export const IconChevron = make(ChevronRight, { size: 16 });
 
 export const IconClock = make(Clock);
 export const IconSupport = make(Headphones);
+export const IconMic = make(Mic, { size: 18 });
+export const IconStop = make(Square, { size: 16, fill: "currentColor" });
+export const IconSpeaker = make(Volume2);
+export const IconMute = make(VolumeX);
+export const IconAlert = make(AlertTriangle);
+export const IconSparkle = make(Sparkles, { size: 16 });
+export const IconParty = make(PartyPopper);
 
 /* Brand marks — Lucide intentionally ships no brand logos, so these are
    the official simple-icons paths (filled, 24px grid). */

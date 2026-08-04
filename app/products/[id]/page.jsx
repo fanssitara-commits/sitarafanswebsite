@@ -8,6 +8,7 @@ import ProductCard from "@/components/ProductCard";
 import { useCart } from "@/context/CartContext";
 import { useInventory } from "@/context/InventoryContext";
 import { formatPKR } from "@/data/products";
+import { IconStar, IconCart, IconBolt, IconPackage } from "@/components/Icons";
 
 export default function ProductDetail({ params }) {
   const { allProducts: products, ready } = useInventory();
@@ -26,7 +27,7 @@ export default function ProductDetail({ params }) {
     return (
       <div className="container">
         <div className="glass empty-state" style={{ marginTop: 40 }}>
-          <div className="emoji">😕</div>
+          <div className="empty-icon"><IconPackage size={40} /></div>
           <h3>Product not found</h3>
           <Link href="/products" className="btn btn-primary mt-40">
             Back to Shop
@@ -144,8 +145,8 @@ export default function ProductDetail({ params }) {
           <p style={{ fontSize: "1rem", color: "var(--blue-2)", fontWeight: 600 }}>
             {product.tagline}
           </p>
-          <p style={{ fontSize: "0.9rem" }}>
-            ⭐ {product.rating} rating • {product.warranty} warranty
+          <p style={{ fontSize: "0.9rem", display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <IconStar size={15} style={{ color: "var(--gold, #f5a623)" }} /> {product.rating} rating • {product.warranty} warranty
           </p>
 
           <div className="flex gap-12 wrap" style={{ alignItems: "baseline", margin: "10px 0 12px" }}>
@@ -221,7 +222,7 @@ export default function ProductDetail({ params }) {
                 </button>
               </div>
               <button className="btn btn-primary" onClick={() => addToCart(product, qty, addOpts)}>
-                🛒 Add to Cart
+                <IconCart size={17} /> Add to Cart
               </button>
               <button
                 className="btn btn-blue"
@@ -230,7 +231,7 @@ export default function ProductDetail({ params }) {
                   router.push("/cart");
                 }}
               >
-                ⚡ Buy Now
+                <IconBolt size={17} /> Buy Now
               </button>
             </div>
           )}
