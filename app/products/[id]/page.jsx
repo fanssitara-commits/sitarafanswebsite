@@ -77,17 +77,17 @@ export default function ProductDetail({ params }) {
   };
 
   return (
-    <div className="container" style={{ paddingBottom: 40 }}>
+    <div className="container pdp" style={{ paddingBottom: 40 }}>
       <div className="breadcrumb page-head" style={{ paddingBottom: 0 }}>
         <Link href="/">Home</Link> / <Link href="/products">Products</Link> /{" "}
         <span style={{ color: "var(--ink)" }}>{product.name}</span>
       </div>
 
-      <div className="grid grid-2" style={{ alignItems: "start", marginTop: 20 }}>
+      <div className="grid pdp-grid" style={{ alignItems: "start", marginTop: 20 }}>
         {/* visual */}
         <div
-          className="glass-strong"
-          style={{ padding: 16, position: "sticky", top: 96, overflow: "hidden" }}
+          className="glass-strong pdp-visual"
+          style={{ padding: 16, overflow: "hidden" }}
         >
           {product.badge && (
             <span className="pill" style={{ position: "absolute", top: 26, left: 26, zIndex: 2 }}>
@@ -139,7 +139,7 @@ export default function ProductDetail({ params }) {
         {/* info */}
         <div>
           <span className="eyebrow">{product.category} Fan</span>
-          <h1 className="section-title" style={{ fontSize: "2.1rem" }}>
+          <h1 className="section-title" style={{ fontSize: "clamp(1.5rem, 6vw, 2.1rem)" }}>
             {product.name}
           </h1>
           <p style={{ fontSize: "1rem", color: "var(--blue-2)", fontWeight: 600 }}>
@@ -150,7 +150,7 @@ export default function ProductDetail({ params }) {
           </p>
 
           <div className="flex gap-12 wrap" style={{ alignItems: "baseline", margin: "10px 0 12px" }}>
-            <span className="product-price" style={{ fontSize: "2rem" }}>
+            <span className="product-price" style={{ fontSize: "clamp(1.5rem, 5vw, 2rem)" }}>
               {formatPKR(currentPrice)}
             </span>
             {product.oldPrice && product.oldPrice > currentPrice && (
@@ -205,7 +205,7 @@ export default function ProductDetail({ params }) {
               </span>
             </div>
           ) : (
-            <div className="flex gap-12 wrap" style={{ alignItems: "center", margin: "22px 0" }}>
+            <div className="flex gap-12 wrap pdp-actions" style={{ alignItems: "center", margin: "22px 0" }}>
               <div className="qty">
                 <button onClick={() => setQty((q) => Math.max(1, q - 1))}>−</button>
                 <span style={{ minWidth: 24, textAlign: "center", fontWeight: 700 }}>

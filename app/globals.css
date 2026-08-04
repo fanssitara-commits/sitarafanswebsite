@@ -1228,6 +1228,25 @@ p { color: var(--muted); line-height: 1.7; margin: 0 0 1em; }
 .imgbox img { width: 100%; height: 100%; object-fit: contain; }
 .imgbox svg { width: 78%; height: 78%; }
 
+/* ---------- product detail page: responsive ---------- */
+.pdp-grid { grid-template-columns: 1fr 1fr; }
+.pdp-visual { position: sticky; top: 96px; }
+@media (max-width: 900px) {
+  /* stack image over info on tablets/phones, and stop the image pinning */
+  .pdp-grid { grid-template-columns: 1fr; }
+  .pdp-visual { position: static; }
+}
+@media (max-width: 560px) {
+  .pdp { padding-left: 16px; padding-right: 16px; }
+  .pdp .breadcrumb { font-size: 0.82rem; }
+  /* full-width, easy-to-tap action buttons */
+  .pdp-actions { gap: 10px; }
+  .pdp-actions .btn { flex: 1 1 100%; justify-content: center; }
+  .pdp-actions .qty { width: 100%; justify-content: center; }
+  /* one spec per line so long values don't get squeezed */
+  .pdp .grid-2 { grid-template-columns: 1fr; }
+}
+
 /* ---------- FORMS ---------- */
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
 .field label { font-family: var(--font-head); font-size: 0.85rem; font-weight: 500; color: var(--ink); }
@@ -1263,7 +1282,18 @@ p { color: var(--muted); line-height: 1.7; margin: 0 0 1em; }
 }
 .qty button:hover { background: var(--blue-2); color: #fff; }
 @media (max-width: 620px) {
-  .cart-row { grid-template-columns: 64px 1fr; row-gap: 10px; }
+  .cart-row {
+    grid-template-columns: 72px 1fr;
+    grid-template-areas:
+      "img info"
+      "qty price";
+    row-gap: 12px; column-gap: 14px; padding: 14px;
+  }
+  .cart-row > :nth-child(1) { grid-area: img; align-self: start; }
+  .cart-row > :nth-child(2) { grid-area: info; }
+  .cart-row > :nth-child(3) { grid-area: qty; justify-self: start; }
+  .cart-row > :nth-child(4) { grid-area: price; justify-self: end; align-self: center; }
+  .cart-row .imgbox { width: 72px !important; height: 60px !important; }
   .cart-thumb { width: 64px; height: 54px; }
 }
 .summary-line { display: flex; justify-content: space-between; padding: 8px 0; color: var(--muted); }
@@ -2223,6 +2253,18 @@ a.rec-field-value:hover { color: var(--blue-2); }
   transition: opacity 0.3s, transform 0.3s; z-index: 200;
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+/* keep the toast readable and clear of the floating buttons on phones */
+@media (max-width: 600px) {
+  .toast {
+    left: 16px; right: auto; transform: translateX(0) translateY(20px);
+    /* leave room on the right for the WhatsApp / Ask-AI buttons */
+    max-width: calc(100vw - 96px);
+    border-radius: 16px; padding: 12px 16px;
+    text-align: left; line-height: 1.35;
+    white-space: normal; word-break: break-word;
+  }
+  .toast.show { transform: translateX(0) translateY(0); }
+}
 
 /* ---------- floating WhatsApp button ---------- */
 .wa-fab {
