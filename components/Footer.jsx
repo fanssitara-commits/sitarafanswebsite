@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import FooterNewsletter from "./FooterNewsletter";
 import {
   IconPhone, IconMail, IconPin, IconClock,
-  IconFacebook, IconInstagram, IconYoutube, IconWhatsapp,
+  IconFacebook, IconInstagram, IconTiktok, IconWhatsapp,
 } from "./Icons";
 
 export default function Footer() {
@@ -34,8 +34,8 @@ export default function Footer() {
             <div className="social-row" style={{ marginTop: 20 }}>
               <a className="social-chip fb" href="#" aria-label="Facebook"><IconFacebook /></a>
               <a className="social-chip ig" href="#" aria-label="Instagram"><IconInstagram /></a>
-              <a className="social-chip yt" href="#" aria-label="YouTube"><IconYoutube /></a>
-              <a className="social-chip wa" href="#" aria-label="WhatsApp"><IconWhatsapp /></a>
+              <a className="social-chip tt" href="https://www.tiktok.com/@sitarafan_official" target="_blank" rel="noreferrer" aria-label="TikTok"><IconTiktok /></a>
+              <a className="social-chip wa" href="https://wa.me/923001116492" target="_blank" rel="noreferrer" aria-label="WhatsApp"><IconWhatsapp /></a>
             </div>
           </div>
 
