@@ -20,7 +20,8 @@ export const emptyProduct = {
   oldPrice: "",
   color: "",
   material: "",
-  warranty: "1 Year",
+  motorWarranty: "Lifetime",
+  kitWarranty: "1 Year",
   sweep: "",
   speed: "",
   stock: "",
@@ -44,7 +45,12 @@ export const CATEGORIES = [
   "Industrial",
 ];
 
-export const WARRANTIES = ["6 Months", "1 Year", "2 Years", "3 Years", "5 Years"];
+export const MOTOR_WARRANTIES = ["Lifetime", "10 Years", "5 Years", "3 Years", "2 Years", "1 Year"];
+export const KIT_WARRANTIES = ["6 Months", "1 Year", "2 Years", "3 Years", "5 Years"];
+
+// default fallbacks used across the shop when a product has no explicit value
+export const DEFAULT_MOTOR_WARRANTY = "Lifetime";
+export const DEFAULT_KIT_WARRANTY = "1 Year";
 
 export function InventoryProvider({ children }) {
   const [allProducts, setAllProducts] = useState([]);

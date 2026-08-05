@@ -4,6 +4,7 @@ import Link from "next/link";
 import ProductImage from "./ProductImage";
 import { useCart } from "@/context/CartContext";
 import { formatPKR, defaultVariant } from "@/data/products";
+import { DEFAULT_KIT_WARRANTY } from "@/context/InventoryContext";
 import { IconStar, IconArrowRight, IconCart } from "./Icons";
 
 export default function ProductCard({ product }) {
@@ -41,12 +42,10 @@ export default function ProductCard({ product }) {
         </Link>
         <p className="product-tag">{product.tagline || product.short}</p>
 
-        {(product.warranty || product.color) && (
-          <ul className="card-specs">
-            {product.warranty && <li>{product.warranty} warranty</li>}
-            {product.color && <li>{product.color}</li>}
-          </ul>
-        )}
+        <ul className="card-specs">
+          <li>{product.kitWarranty || DEFAULT_KIT_WARRANTY} kit warranty</li>
+          {product.color && <li>{product.color}</li>}
+        </ul>
 
         <div className="product-foot">
           <div>

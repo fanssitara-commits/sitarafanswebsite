@@ -68,7 +68,7 @@ export default function InventoryPanel() {
                 </div>
                 <div className="inv-tags">
                   <span>Added by you</span>
-                  {p.warranty && <span>{p.warranty} warranty</span>}
+                  <span>{p.kitWarranty || "1 Year"} kit warranty</span>
                   {p.stock != null && <span>{p.stock} in stock</span>}
                   {Array.isArray(p.variants) && p.variants.length > 0 && (
                     <span>{p.variants.map((v) => v.label).join(" / ")}</span>

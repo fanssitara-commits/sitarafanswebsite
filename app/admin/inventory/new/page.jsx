@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { useInventory, emptyProduct, CATEGORIES, WARRANTIES } from "@/context/InventoryContext";
+import { useInventory, emptyProduct, CATEGORIES, MOTOR_WARRANTIES, KIT_WARRANTIES, DEFAULT_MOTOR_WARRANTY, DEFAULT_KIT_WARRANTY } from "@/context/InventoryContext";
 import { useCart } from "@/context/CartContext";
 import { IconPackage, IconArrowRight, IconArrowLeft } from "@/components/Icons";
 
@@ -224,7 +224,7 @@ function InventoryForm() {
         </div>
 
         <p className="inv-group">Build &amp; quality</p>
-        <div className="grid grid-3" style={{ gap: 14 }}>
+        <div className="grid grid-2" style={{ gap: 14 }}>
           <div className="field">
             <label>Colour / Finish</label>
             <input className="input" value={form.color} onChange={set("color")} placeholder="Black &amp; Gold" />
@@ -233,10 +233,19 @@ function InventoryForm() {
             <label>Material / Made Of</label>
             <input className="input" value={form.material} onChange={set("material")} placeholder="100% pure copper motor, aluminium blades" />
           </div>
+        </div>
+
+        <div className="grid grid-2" style={{ gap: 14 }}>
           <div className="field">
-            <label>Warranty</label>
-            <select className="select" value={form.warranty} onChange={set("warranty")}>
-              {WARRANTIES.map((w) => <option key={w}>{w}</option>)}
+            <label>Motor Warranty</label>
+            <select className="select" value={form.motorWarranty || DEFAULT_MOTOR_WARRANTY} onChange={set("motorWarranty")}>
+              {MOTOR_WARRANTIES.map((w) => <option key={w}>{w}</option>)}
+            </select>
+          </div>
+          <div className="field">
+            <label>Kit Warranty</label>
+            <select className="select" value={form.kitWarranty || DEFAULT_KIT_WARRANTY} onChange={set("kitWarranty")}>
+              {KIT_WARRANTIES.map((w) => <option key={w}>{w}</option>)}
             </select>
           </div>
         </div>

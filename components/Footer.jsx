@@ -32,7 +32,7 @@ export default function Footer() {
               fans — Sitara comfort for every home.
             </p>
             <div className="social-row" style={{ marginTop: 20 }}>
-              <a className="social-chip fb" href="#" aria-label="Facebook"><IconFacebook /></a>
+              <a className="social-chip fb" href="https://www.facebook.com/share/19G5Uunz8T/" target="_blank" rel="noreferrer" aria-label="Facebook"><IconFacebook /></a>
               <a className="social-chip ig" href="#" aria-label="Instagram"><IconInstagram /></a>
               <a className="social-chip tt" href="https://www.tiktok.com/@sitarafan_official" target="_blank" rel="noreferrer" aria-label="TikTok"><IconTiktok /></a>
               <a className="social-chip wa" href="https://wa.me/923001116492" target="_blank" rel="noreferrer" aria-label="WhatsApp"><IconWhatsapp /></a>
@@ -64,11 +64,14 @@ export default function Footer() {
               <a href="tel:+923001116492">
                 <span className="foot-ic"><IconPhone /></span> +92 300 1116492
               </a>
+              <a href="tel:+923110092222">
+                <span className="foot-ic"><IconPhone /></span> +92 311 0092222
+              </a>
               <a href="mailto:fanssitara@gmail.com">
                 <span className="foot-ic"><IconMail /></span> fanssitara@gmail.com
               </a>
-              <a href="https://www.google.com/maps/search/?api=1&query=Gujranwala%2C+Pakistan" target="_blank" rel="noreferrer">
-                <span className="foot-ic"><IconPin /></span> Gujranwala, Pakistan
+              <a href="https://maps.app.goo.gl/Kbb56HRLVS6V3Mu36" target="_blank" rel="noreferrer">
+                <span className="foot-ic"><IconPin /></span> Sitara Fans, Gujranwala
               </a>
               <span className="foot-hours">
                 <span className="foot-ic"><IconClock /></span> Mon–Sat · 9am – 8pm

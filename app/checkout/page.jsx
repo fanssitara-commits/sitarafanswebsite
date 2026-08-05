@@ -170,6 +170,21 @@ export default function CheckoutPage() {
             </div>
           </div>
 
+          {form.payment === "JazzCash / Easypaisa" && (
+            <div className="pay-note">
+              <strong>JazzCash / Easypaisa</strong>
+              <p>
+                Send your payment to our JazzCash number{" "}
+                <a href="tel:+923001116492">+92 300 1116492</a>. After paying, you
+                <b> must send the payment screenshot on WhatsApp</b> to{" "}
+                <a href="https://wa.me/923001116492" target="_blank" rel="noreferrer">
+                  +92 300 1116492
+                </a>{" "}
+                to confirm your order.
+              </p>
+            </div>
+          )}
+
           <div className="field">
             <label>Order Notes (optional)</label>
             <textarea className="textarea" value={form.notes} onChange={set("notes")} placeholder="Any special instructions..." />

@@ -16,7 +16,7 @@ const channels = [
 ];
 
 const faqs = [
-  { q: "How do I claim my warranty?", a: "Keep your invoice and contact us with your order ID. Warranty covers manufacturing defects for the period stated on your product (1–3 years)." },
+  { q: "How do I claim my warranty?", a: "Keep your invoice and contact us with your order ID. Every fan carries a lifetime warranty on the motor and a 1-year warranty on the kit parts." },
   { q: "How long does delivery take?", a: "Orders are usually delivered within 3–5 working days across major cities. You'll get a call to confirm before dispatch." },
   { q: "Do you offer installation?", a: "Standard ceiling fans are easy to install with any local electrician. For designer models, contact us for guidance." },
   { q: "Which fan should I choose for my room?", a: "For most rooms a 56\" ceiling fan is ideal. For smaller spaces or shops, our 48\" and pedestal options work great. Our team can help you pick." },

@@ -19,13 +19,13 @@ const empty = {
 };
 
 const covered = [
-  { icon: <IconGear />, title: "Motor & Windings", text: "Manufacturing defects in the copper motor and internal windings." },
-  { icon: <IconPackage />, title: "Build & Finish", text: "Defects in blades, canopy and factory finish under normal use." },
-  { icon: <IconShield />, title: "Electrical Parts", text: "Capacitor and wiring faults not caused by external power issues." },
+  { icon: <IconGear />, title: "Lifetime Motor Warranty", text: "The pure copper motor and internal windings are covered for a lifetime against manufacturing defects." },
+  { icon: <IconPackage />, title: "1-Year Kit Warranty", text: "Capacitor, wiring and kit parts are covered for 1 year from the date of purchase." },
+  { icon: <IconShield />, title: "Build & Finish", text: "Defects in blades, canopy and factory finish under normal use." },
 ];
 
 const terms = [
-  "Warranty is valid only for the period printed on your product (1–3 years) from the date of purchase.",
+  "Every Sitara fan carries a lifetime warranty on the motor and a 1-year warranty on the kit parts, from the date of purchase.",
   "Keep your original invoice / order ID — it is required for any warranty claim.",
   "Warranty covers manufacturing defects only, not physical damage, misuse or unauthorised repairs.",
   "Damage from voltage fluctuation, water or incorrect installation is not covered.",

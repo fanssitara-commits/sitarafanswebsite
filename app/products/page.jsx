@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
 import { useCart } from "@/context/CartContext";
-import { useInventory } from "@/context/InventoryContext";
+import { useInventory, DEFAULT_KIT_WARRANTY } from "@/context/InventoryContext";
 import { formatPKR, defaultVariant } from "@/data/products";
 import {
   IconSearch, IconClose, IconArrowRight, IconStar, IconMenu, IconCheck,
@@ -47,12 +47,6 @@ export default function ProductsPage() {
   const catCounts = useMemo(() => {
     const m = {};
     for (const p of allProducts) m[p.category] = (m[p.category] || 0) + 1;
-    return m;
-  }, [allProducts]);
-
-  const warrantyCounts = useMemo(() => {
-    const m = {};
-    for (const p of allProducts) if (p.warranty) m[p.warranty] = (m[p.warranty] || 0) + 1;
     return m;
   }, [allProducts]);
 
@@ -147,16 +141,8 @@ export default function ProductsPage() {
       <div className="filter-block">
         <h4>Warranty</h4>
         <ul className="filter-list">
-          {Object.entries(warrantyCounts).sort().map(([w, n]) => (
-            <li key={w}>
-              <label className="check">
-                <input type="checkbox" checked={warranties.includes(w)} onChange={() => toggle(warranties, setWarranties, w)} />
-                <span className="box"><IconCheck size={13} /></span>
-                <span className="lbl">{w}</span>
-                <span className="cnt">{n}</span>
-              </label>
-            </li>
-          ))}
+          <li><span className="lbl" style={{ opacity: 0.85 }}>Lifetime motor warranty</span></li>
+          <li><span className="lbl" style={{ opacity: 0.85 }}>1 year kit warranty</span></li>
         </ul>
       </div>
 
@@ -190,7 +176,7 @@ export default function ProductsPage() {
           <div className="shop-trust">
             <span><IconLeaf size={16} /> Up to 75% Less Energy</span>
             <span><IconBolt size={16} /> 100% Pure Copper Motor</span>
-            <span><IconShield size={16} /> Up to 3-Year Warranty</span>
+            <span><IconShield size={16} /> Lifetime Motor Warranty</span>
             <span><IconTruck size={16} /> Free Delivery</span>
           </div>
         </div>
@@ -295,7 +281,7 @@ export default function ProductsPage() {
                     <ul className="list-specs">
                       {p.sweep && <li>{p.sweep} sweep</li>}
                       {p.speed && <li>{p.speed}</li>}
-                      {p.warranty && <li>{p.warranty} warranty</li>}
+                      <li>{p.kitWarranty || DEFAULT_KIT_WARRANTY} kit warranty</li>
                       {p.color && <li>{p.color}</li>}
                     </ul>
                   </div>

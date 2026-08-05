@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import ProductImage from "@/components/ProductImage";
 import ProductCard from "@/components/ProductCard";
 import { useCart } from "@/context/CartContext";
-import { useInventory } from "@/context/InventoryContext";
+import { useInventory, DEFAULT_MOTOR_WARRANTY, DEFAULT_KIT_WARRANTY } from "@/context/InventoryContext";
 import { formatPKR } from "@/data/products";
 import { IconStar, IconCart, IconBolt, IconPackage } from "@/components/Icons";
 
@@ -64,7 +64,8 @@ export default function ProductDetail({ params }) {
     ["Speed", product.speed],
     ["Colour", activeColor?.name || product.color],
     ["Material", product.material],
-    ["Warranty", product.warranty],
+    ["Motor Warranty", product.motorWarranty || DEFAULT_MOTOR_WARRANTY],
+    ["Kit Warranty", product.kitWarranty || DEFAULT_KIT_WARRANTY],
     ["Rating", `${product.rating} / 5`],
     ["Availability", product.stock != null ? `${product.stock} in stock` : null],
   ].filter(([, v]) => v);
@@ -146,7 +147,7 @@ export default function ProductDetail({ params }) {
             {product.tagline}
           </p>
           <p style={{ fontSize: "0.9rem", display: "inline-flex", alignItems: "center", gap: 6 }}>
-            <IconStar size={15} style={{ color: "var(--gold, #f5a623)" }} /> {product.rating} rating • {product.warranty} warranty
+            <IconStar size={15} style={{ color: "var(--gold, #f5a623)" }} /> {product.rating} rating • {product.kitWarranty || DEFAULT_KIT_WARRANTY} kit warranty
           </p>
 
           <div className="flex gap-12 wrap" style={{ alignItems: "baseline", margin: "10px 0 12px" }}>
