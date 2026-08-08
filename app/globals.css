@@ -2618,6 +2618,10 @@ a.rec-field-value:hover { color: var(--blue-2); }
 .contact-hours li:last-child { border-bottom: none; }
 .contact-hours span { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
 .contact-hours strong { color: var(--ink); font-family: var(--font-head); }
+.contact-hours strong.is-off {
+  color: var(--red, #c0392b); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 10px; border: 1px solid currentColor; border-radius: 999px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }

@@ -74,7 +74,7 @@ export default function Footer() {
                 <span className="foot-ic"><IconPin /></span> Sitara Fans, Gujranwala
               </a>
               <span className="foot-hours">
-                <span className="foot-ic"><IconClock /></span> Mon–Sat · 9am – 8pm
+                <span className="foot-ic"><IconClock /></span> Mon–Sat except Fri · 9am – 7pm
               </span>
             </div>
           </div>

@@ -11,7 +11,7 @@ const MAPS = "https://maps.app.goo.gl/Kbb56HRLVS6V3Mu36";
 const MAP_EMBED = "https://www.google.com/maps?q=Sitara+Fans,+Gujranwala&z=18&output=embed";
 
 const channels = [
-  { icon: <IconPhone size={20} />, title: "Call Us", lines: ["+92 300 1116492", "+92 311 0092222"], note: "Mon–Sat, 9am–8pm", href: "tel:+923001116492", cta: "Call now" },
+  { icon: <IconPhone size={20} />, title: "Call Us", lines: ["+92 300 1116492", "+92 311 0092222"], note: "Mon–Sat except Fri, 9am–7pm", href: "tel:+923001116492", cta: "Call now" },
   { icon: <IconWhatsapp size={20} />, title: "WhatsApp", lines: ["+92 300 1116492"], note: "Fast replies in working hours", href: "https://wa.me/923001116492", cta: "Chat on WhatsApp", tone: "red" },
   { icon: <IconMail size={20} />, title: "Email Us", lines: ["fanssitara@gmail.com"], note: "We reply within 24 hours", href: "mailto:fanssitara@gmail.com", cta: "Send an email" },
   { icon: <IconPin size={20} />, title: "Visit Us", lines: [ADDRESS], note: "Factory & head office", href: MAPS, cta: "Get directions", tone: "red" },
@@ -126,9 +126,9 @@ export default function ContactPage() {
               </a>
             </div>
             <ul className="contact-hours">
-              <li><span><IconClock size={16} /> Mon – Fri</span><strong>9:00am – 8:00pm</strong></li>
-              <li><span><IconClock size={16} /> Saturday</span><strong>10:00am – 6:00pm</strong></li>
-              <li><span><IconClock size={16} /> Sunday</span><strong>Closed</strong></li>
+              <li><span><IconClock size={16} /> Mon – Thu</span><strong>9:00am – 7:00pm</strong></li>
+              <li><span><IconClock size={16} /> Friday</span><strong className="is-off">Closed</strong></li>
+              <li><span><IconClock size={16} /> Sat – Sun</span><strong>9:00am – 7:00pm</strong></li>
             </ul>
           </div>
           <div className="contact-map-embed">

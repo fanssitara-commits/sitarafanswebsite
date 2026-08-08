@@ -74,8 +74,34 @@ export default async function HomePage() {
   const aboutTiles = pick(ABOUT_IDS, 4);
   const galleryItems = pick(GALLERY_IDS, 8);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.sitarafans.com/#organization",
+        name: "Sitara Fans",
+        url: "https://www.sitarafans.com",
+        logo: "https://www.sitarafans.com/icon.png",
+        description:
+          "Sitara Fans — premium ceiling, pedestal, designer and rechargeable fans. Pure copper motors, real warranties, elegant designs.",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.sitarafans.com/#website",
+        url: "https://www.sitarafans.com",
+        name: "Sitara Fans",
+        publisher: { "@id": "https://www.sitarafans.com/#organization" },
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSlider />
 
       {/* ---------------- MOVING PRODUCT STRIP ---------------- */}
