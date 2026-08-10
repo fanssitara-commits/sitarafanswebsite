@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getCollection } from "@/lib/mongodb";
 import { ensureProductsSeeded } from "@/lib/seedProducts";
 import { isAdmin } from "@/lib/auth";
@@ -85,6 +86,8 @@ export async function POST(request) {
     delete item._id;
 
     await col.insertOne({ ...item });
+    revalidatePath("/");          // landing page (featured / about / gallery)
+    revalidatePath("/products");  // shop listing
     return NextResponse.json({ ok: true, item });
   } catch (e) {
     console.error("POST /api/products", e);

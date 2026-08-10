@@ -22,3 +22,18 @@ export async function PATCH(request, { params }) {
     return NextResponse.json({ ok: false, error: "Could not update order" }, { status: 500 });
   }
 }
+
+// DELETE /api/orders/:id — remove an order (admin only)
+export async function DELETE(_request, { params }) {
+  if (!isAdmin()) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  try {
+    const col = await getCollection("orders");
+    await col.deleteOne({ id: params.id });
+    return NextResponse.json({ ok: true });
+  } catch (e) {
+    console.error("DELETE /api/orders/:id", e);
+    return NextResponse.json({ ok: false, error: "Could not delete order" }, { status: 500 });
+  }
+}

@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { formatPKR } from "@/data/products";
 import {
-  IconPackage, IconSearch, IconPhone, IconMail, IconWhatsapp, IconPin, IconStar, IconUsers, IconShield,
+  IconPackage, IconSearch, IconPhone, IconMail, IconWhatsapp, IconPin, IconStar, IconUsers, IconShield, IconTrash,
 } from "@/components/Icons";
 import RecordDrawer, { RecSection, RecFields } from "@/components/admin/RecordDrawer";
 
@@ -18,9 +18,15 @@ const waLink = (phone = "") => {
 };
 
 export default function AdminOrdersPage() {
-  const { orders, ready, updateOrder } = useCart();
+  const { orders, ready, updateOrder, deleteOrder } = useCart();
   const [openId, setOpenId] = useState(null);
   const [q, setQ] = useState("");
+
+  const removeOrder = (id) => {
+    if (!window.confirm("Delete this order? This cannot be undone.")) return;
+    deleteOrder(id);
+    if (openId === id) setOpenId(null);
+  };
 
   const list = useMemo(() => {
     const s = q.trim().toLowerCase();
@@ -110,7 +116,13 @@ export default function AdminOrdersPage() {
                         <td style={{ color: "var(--ink)", fontWeight: 700 }}>{formatPKR(o.total)}</td>
                         <td><span className={"ord-badge " + ordClass(o.status)}>{o.status || "Pending"}</span></td>
                         <td>
-                          <button className="btn btn-sm" onClick={(e) => { e.stopPropagation(); setOpenId(o.id); }}>View</button>
+                          <div style={{ display: "flex", gap: 6, justifyContent: "flex-end" }}>
+                            <button className="btn btn-sm" onClick={(e) => { e.stopPropagation(); setOpenId(o.id); }}>View</button>
+                            <button className="btn btn-sm danger" title="Delete order"
+                              onClick={(e) => { e.stopPropagation(); removeOrder(o.id); }}>
+                              <IconTrash />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -142,6 +154,9 @@ export default function AdminOrdersPage() {
                   <IconMail /> Email
                 </a>
               )}
+              <button className="btn btn-sm danger" onClick={() => removeOrder(active.id)}>
+                <IconTrash /> Delete
+              </button>
               <span className="rec-foot-total">Total <strong>{formatPKR(active.total)}</strong></span>
             </>
           )

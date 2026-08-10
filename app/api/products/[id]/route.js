@@ -1,8 +1,15 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getCollection } from "@/lib/mongodb";
 import { isAdmin } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
+
+// Drop the ISR cache for pages that render products so admin edits show at once.
+function refreshProductPages() {
+  revalidatePath("/");                 // landing page (featured / about / gallery)
+  revalidatePath("/products");         // shop listing
+}
 
 // GET /api/products/:id
 export async function GET(_request, { params }) {
@@ -61,6 +68,7 @@ export async function PUT(request, { params }) {
     );
     const item = res?.value ?? res; // driver version differences
     if (!item) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    refreshProductPages();
     return NextResponse.json({ ok: true, item });
   } catch (e) {
     console.error("PUT /api/products/:id", e);
@@ -76,6 +84,7 @@ export async function DELETE(_request, { params }) {
   try {
     const col = await getCollection("products");
     await col.deleteOne({ id: params.id });
+    refreshProductPages();
     return NextResponse.json({ ok: true });
   } catch (e) {
     console.error("DELETE /api/products/:id", e);

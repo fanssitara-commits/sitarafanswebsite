@@ -145,6 +145,19 @@ export function CartProvider({ children }) {
     [refreshOrders]
   );
 
+  const deleteOrder = useCallback(
+    async (id) => {
+      // optimistic — drop it from the list right away
+      setOrders((prev) => prev.filter((o) => o.id !== id));
+      try {
+        await fetch(`/api/orders/${id}`, { method: "DELETE" });
+      } catch {
+        refreshOrders();
+      }
+    },
+    [refreshOrders]
+  );
+
   const count = cart.reduce((s, i) => s + i.qty, 0);
   const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
@@ -162,6 +175,7 @@ export function CartProvider({ children }) {
         clearCart,
         placeOrder,
         updateOrder,
+        deleteOrder,
         refreshOrders,
         showToast,
       }}
