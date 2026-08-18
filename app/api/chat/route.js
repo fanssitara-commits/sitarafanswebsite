@@ -138,9 +138,12 @@ ALWAYS respond with ONLY a valid JSON object, no extra text, in this exact shape
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
+          model: process.env.GROQ_MODEL || "openai/gpt-oss-120b",
           temperature: 0.4,
-          max_tokens: 700,
+          // gpt-oss spends part of its budget on hidden reasoning tokens, so keep
+          // the ceiling well above the visible reply length or JSON gets truncated.
+          max_tokens: 2000,
+          reasoning_effort: "low",
           response_format: { type: "json_object" },
           messages: [{ role: "system", content: system }, ...convo],
         }),
