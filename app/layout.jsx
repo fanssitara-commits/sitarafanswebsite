@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { CartProvider } from "@/context/CartContext";
 import { InventoryProvider } from "@/context/InventoryContext";
 import SiteChrome from "@/components/SiteChrome";
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
             <SiteChrome>{children}</SiteChrome>
           </CartProvider>
         </InventoryProvider>
+        <Analytics />
       </body>
     </html>
   );
